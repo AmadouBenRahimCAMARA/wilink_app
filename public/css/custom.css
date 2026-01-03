@@ -1,0 +1,187 @@
+/* Wilink App Professional Theme */
+:root {
+    --primary-color: #0056b3;
+    /* Bleu Profond */
+    --secondary-color: #28a745;
+    /* Vert Vif */
+    --accent-color: #004494;
+    /* Bleu Foncé pour hover */
+    --bg-light: #f4f6f9;
+    /* Blanc Cassé Pro */
+    --text-dark: #343a40;
+    --sidebar-width: 250px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100vh;
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    padding-top: 20px;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav {
+    padding: 20px 0;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 12px 20px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 16px;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+    transition: all 0.3s;
+}
+
+/* Navbar (Top) override */
+.navbar-custom {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 15px 30px;
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Cards */
+.card-pro {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: white;
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.card-pro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header-pro {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    border-radius: 8px;
+}
+
+/* Login Page Only */
+.login-page {
+    background-color: var(--primary-color);
+    /* Couleur uniforme */
+    background-image: none;
+    min-height: 100vh;
+}
+
+.login-page #app {
+    height: 100vh;
+}
+
+.login-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.login-header {
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+/* Utilities */
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary-custom {
+    color: var(--secondary-color) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+
+    .sidebar.active {
+        margin-left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .navbar-custom {
+        margin-left: 0;
+        width: 100%;
+    }
+}
