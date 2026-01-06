@@ -5,9 +5,13 @@
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-5 col-lg-5">
             <!-- Logo Brand -->
-            <div class="text-center mb-4 text-white">
-                 <h2 class="fw-bold ls-1">Devenir Revendeur</h2>
-                 <p class="text-white-50 small">Rejoignez le réseau Wilink International</p>
+            <!-- Logo Brand -->
+            <div class="text-center mb-3">
+                 <div class="bg-white rounded-circle shadow mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="fa-solid fa-wifi fa-2x text-primary-custom"></i>
+                 </div>
+                 <h3 class="text-white mt-2 fw-bold ls-1">WILINK APP</h3>
+                 <p class="text-white-50 small">Gestion WiFi Professionnelle</p>
             </div>
 
             <!-- Register Card -->
@@ -18,15 +22,42 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label text-muted small text-uppercase fw-bold">Nom Complet</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-user"></i></span>
-                                <input id="name" type="text" class="form-control border-start-0 bg-light @error('name') is-invalid @enderror" 
-                                       name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                       placeholder="Votre Nom">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nom" class="form-label text-muted small text-uppercase fw-bold">Nom de famille</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-user"></i></span>
+                                    <input id="nom" type="text" class="form-control border-start-0 bg-light @error('nom') is-invalid @enderror" 
+                                           name="nom" value="{{ old('nom') }}" required autocomplete="family-name" autofocus
+                                           placeholder="Votre Nom">
+                                </div>
+                                @error('nom')
+                                    <span class="text-danger small mt-1 d-block"><strong>{{ $message }}</strong></span>
+                                @enderror
                             </div>
-                            @error('name')
+                            <div class="col-md-6 mb-3">
+                                <label for="prenom" class="form-label text-muted small text-uppercase fw-bold">Prénom</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-user"></i></span>
+                                    <input id="prenom" type="text" class="form-control border-start-0 bg-light @error('prenom') is-invalid @enderror" 
+                                           name="prenom" value="{{ old('prenom') }}" required autocomplete="given-name"
+                                           placeholder="Votre Prénom">
+                                </div>
+                                @error('prenom')
+                                    <span class="text-danger small mt-1 d-block"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telephone" class="form-label text-muted small text-uppercase fw-bold">Téléphone</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-phone"></i></span>
+                                <input id="telephone" type="text" class="form-control border-start-0 bg-light @error('telephone') is-invalid @enderror" 
+                                       name="telephone" value="{{ old('telephone') }}" required autocomplete="tel"
+                                       placeholder="01020304">
+                            </div>
+                            @error('telephone')
                                 <span class="text-danger small mt-1 d-block"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>

@@ -44,6 +44,13 @@ Cette plateforme centralise la création des tickets Internet, leur distribution
         DB_PASSWORD=votre_mot_de_passe
         ```
 
+    *   **Configuration Email (Test Local)** :
+        Pour tester la réinitialisation de mot de passe sans envoyer de vrais emails, utilisez le driver `log` :
+        ```ini
+        MAIL_MAILER=log
+        ```
+        Les emails seront écrits dans `storage/logs/laravel.log`.
+
 4.  **Base de données & Données de test**
     ```bash
     php artisan migrate
@@ -78,4 +85,4 @@ Pour connecter votre serveur NAS (MikroTik) :
 
 ## 📝 Auteur
 Conçu pour Wilink International.
-Stack : Laravel 9, Bootstrap 5, MySQL.
+Stack : Laravel 9, Bootstrap 5.2.3 (Vite), MySQL 5.7+, FreeRADIUS.

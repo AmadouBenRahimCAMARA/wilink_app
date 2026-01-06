@@ -24,6 +24,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::resource('tickets', App\Http\Controllers\Admin\TicketController::class)->only(['index', 'create', 'store']);
+    Route::get('tickets/{lot}/pdf', [App\Http\Controllers\Admin\TicketController::class, 'downloadPdf'])->name('tickets.pdf');
     
     // Stock
     Route::get('stock/attribuer', [App\Http\Controllers\Admin\StockController::class, 'create'])->name('stock.create');
@@ -34,11 +35,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // Rapports
     Route::get('reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
+
+    // Reglements
+    Route::resource('reglements', App\Http\Controllers\Admin\ReglementController::class)->only(['index', 'create', 'store']);
 });
 
 // Routes Revendeur
 Route::group(['prefix' => 'reseller', 'as' => 'reseller.', 'middleware' => ['auth']], function () {
     Route::get('/', [App\Http\Controllers\Reseller\DashboardController::class, 'index'])->name('dashboard');
     Route::post('/sell', [App\Http\Controllers\Reseller\DashboardController::class, 'sell'])->name('sell');
+    Route::get('/sales', [App\Http\Controllers\Reseller\SalesController::class, 'index'])->name('sales.index');
 });
 
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

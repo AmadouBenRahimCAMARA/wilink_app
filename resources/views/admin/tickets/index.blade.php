@@ -49,6 +49,9 @@
                                         <td>{{ $lot->quantite }}</td>
                                         <td>{{ $lot->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
+                                            <a href="{{ route('admin.tickets.pdf', $lot->id) }}" class="btn btn-sm btn-outline-danger" target="_blank">
+                                                <i class="fa-solid fa-file-pdf"></i> PDF
+                                            </a>
                                             <button class="btn btn-sm btn-outline-secondary">
                                                 <i class="fa-solid fa-download"></i> CSV
                                             </button>

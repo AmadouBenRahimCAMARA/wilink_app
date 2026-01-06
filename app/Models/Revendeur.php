@@ -11,7 +11,6 @@ class Revendeur extends Model
 
     protected $fillable = [
         'utilisateur_id',
-        'telephone',
         'adresse',
         'taux_commission_defaut',
         'solde_actuel',

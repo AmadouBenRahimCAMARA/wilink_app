@@ -47,4 +47,16 @@ class TicketController extends Controller
 
         return redirect()->route('admin.tickets.index')->with('success', 'Lot de tickets généré avec succès.');
     }
+
+    public function downloadPdf($lot_id)
+    {
+        $lot = LotTicket::with(['tickets', 'type_ticket'])->findOrFail($lot_id);
+        
+        $pdf = \PDF::loadView('admin.tickets.pdf', compact('lot'));
+        
+        // Optionnel : definir le format papier (Ex: A4)
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->download('lot-'.$lot->numero_lot.'.pdf');
+    }
 }

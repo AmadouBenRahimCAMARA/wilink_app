@@ -18,8 +18,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
+        'telephone',
         'password',
         'role_id',
         'actif',
@@ -53,5 +55,14 @@ class User extends Authenticatable
     public function revendeur()
     {
         return $this->hasOne(Revendeur::class, 'utilisateur_id');
+    }
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return ucfirst($this->prenom) . ' ' . strtoupper($this->nom);
     }
 }
