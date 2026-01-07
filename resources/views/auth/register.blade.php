@@ -53,9 +53,22 @@
                             <label for="telephone" class="form-label text-muted small text-uppercase fw-bold">Téléphone</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-phone"></i></span>
-                                <input id="telephone" type="text" class="form-control border-start-0 bg-light @error('telephone') is-invalid @enderror" 
+                                <select class="form-select bg-light border-start-0 border-end-0" style="max-width: 100px;" name="indicatif" required>
+                                    <option value="+226">+226 (BF)</option>
+                                    <option value="+225">+225 (CI)</option>
+                                    <option value="+223">+223 (ML)</option>
+                                    <option value="+221">+221 (SN)</option>
+                                    <option value="+228">+228 (TG)</option>
+                                    <option value="+229">+229 (BJ)</option>
+                                    <option value="+227">+227 (NE)</option>
+                                    <option value="+33">+33 (FR)</option>
+                                </select>
+                                <input id="telephone" type="tel" class="form-control border-start-0 bg-light @error('telephone') is-invalid @enderror" 
                                        name="telephone" value="{{ old('telephone') }}" required autocomplete="tel"
-                                       placeholder="01020304">
+                                       placeholder="70123456"
+                                       pattern="[0-9]*"
+                                       inputmode="numeric"
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             </div>
                             @error('telephone')
                                 <span class="text-danger small mt-1 d-block"><strong>{{ $message }}</strong></span>

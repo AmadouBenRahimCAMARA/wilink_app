@@ -68,6 +68,12 @@
                                 <i class="fa-solid fa-list"></i> Mes Ventes
                             </a>
                         </li>
+                    @elseif(auth()->user()->role_id == 3) <!-- Agent -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('agent.tickets.import') ? 'active' : '' }}" href="{{ route('agent.tickets.import') }}">
+                                <i class="fa-solid fa-file-import"></i> Attribution Tickets
+                            </a>
+                        </li>
                     @endif
 
                     <li class="nav-item mt-5 border-top border-secondary pt-3">

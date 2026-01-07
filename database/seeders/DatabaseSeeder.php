@@ -19,12 +19,17 @@ class DatabaseSeeder extends Seeder
         // 1. Roles
         $adminRole = Role::firstOrCreate(
             ['nom' => 'Administrateur'],
-            ['description' => 'Super Admin']
+            ['description' => 'Administrateur de la plateforme']
         );
         
         $revendeurRole = Role::firstOrCreate(
             ['nom' => 'Revendeur'],
             ['description' => 'Vendeur de tickets']
+        );
+
+        $agentRole = Role::firstOrCreate(
+            ['nom' => 'Agent'],
+            ['description' => 'Importateur et distributeur de tickets']
         );
 
         // 2. Users
@@ -35,6 +40,19 @@ class DatabaseSeeder extends Seeder
                 'prenom' => 'Admin',
                 'password' => Hash::make('password'),
                 'role_id' => $adminRole->id,
+                'telephone' => '+226123456789',
+                'actif' => true,
+            ]
+        );
+
+        $agent = User::firstOrCreate(
+            ['email' => 'agent@wilink.com'],
+            [
+                'nom' => 'Support',
+                'prenom' => 'Agent',
+                'password' => Hash::make('password'),
+                'role_id' => $agentRole->id,
+                'telephone' => '+22600000000',
                 'actif' => true,
             ]
         );
@@ -46,16 +64,15 @@ class DatabaseSeeder extends Seeder
                 'prenom' => 'Revendeur',
                 'password' => Hash::make('password'),
                 'role_id' => $revendeurRole->id,
+                'telephone' => '+22601020304',
                 'actif' => true,
             ]
         );
 
         // 3. Revendeur Profil
-        // 3. Revendeur Profil
         Revendeur::firstOrCreate(
             ['utilisateur_id' => $revendeurUser->id],
             [
-                'telephone' => '0102030405',
                 'solde_actuel' => 0,
             ]
         );

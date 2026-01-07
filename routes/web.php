@@ -47,6 +47,12 @@ Route::group(['prefix' => 'reseller', 'as' => 'reseller.', 'middleware' => ['aut
     Route::get('/sales', [App\Http\Controllers\Reseller\SalesController::class, 'index'])->name('sales.index');
 });
 
+// Routes Agent
+Route::group(['prefix' => 'agent', 'as' => 'agent.', 'middleware' => ['auth']], function () {
+    Route::get('tickets/import', [App\Http\Controllers\Agent\TicketController::class, 'create'])->name('tickets.import');
+    Route::post('tickets/import', [App\Http\Controllers\Agent\TicketController::class, 'store'])->name('tickets.store');
+});
+
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

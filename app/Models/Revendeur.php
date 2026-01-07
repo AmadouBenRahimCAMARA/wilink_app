@@ -21,6 +21,11 @@ class Revendeur extends Model
         return $this->belongsTo(User::class, 'utilisateur_id');
     }
 
+    public function user()
+    {
+        return $this->utilisateur();
+    }
+
     public function ventes()
     {
         return $this->hasMany(Vente::class, 'revendeur_id', 'utilisateur_id');
