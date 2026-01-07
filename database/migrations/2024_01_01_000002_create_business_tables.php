@@ -8,26 +8,6 @@ return new class extends Migration
 {
     public function up()
     {
-        // Zones WiFi
-        Schema::create('zones_wifi', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
-
-        // Routeurs
-        Schema::create('routeurs', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('adresse_ip');
-            $table->string('api_user')->nullable();
-            $table->string('api_password')->nullable();
-            $table->foreignId('zone_id')->constrained('zones_wifi')->onDelete('cascade');
-            $table->string('type')->default('MikroTik');
-            $table->timestamps();
-        });
-
         // Revendeurs (Extension de User)
         Schema::create('revendeurs', function (Blueprint $table) {
             $table->id();
@@ -162,7 +142,5 @@ return new class extends Migration
         Schema::dropIfExists('lots_tickets');
         Schema::dropIfExists('types_tickets');
         Schema::dropIfExists('revendeurs');
-        Schema::dropIfExists('routeurs');
-        Schema::dropIfExists('zones_wifi');
     }
 };

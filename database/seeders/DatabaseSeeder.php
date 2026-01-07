@@ -9,8 +9,6 @@ use App\Models\Role;
 use App\Models\Permission;
 use App\Models\Revendeur;
 use App\Models\TypeTicket;
-use App\Models\ZoneWifi;
-use App\Models\Routeur;
 
 class DatabaseSeeder extends Seeder
 {
@@ -74,18 +72,6 @@ class DatabaseSeeder extends Seeder
             ['utilisateur_id' => $revendeurUser->id],
             [
                 'solde_actuel' => 0,
-            ]
-        );
-
-        // 4. Zone & Routeur
-        $zone = ZoneWifi::firstOrCreate(['nom' => 'Zone Principale']);
-        
-        Routeur::firstOrCreate(
-            ['adresse_ip' => '192.168.88.1'],
-            [
-                'nom' => 'MikroTik Core',
-                'zone_id' => $zone->id,
-                'type' => 'MikroTik'
             ]
         );
 
